@@ -17,7 +17,18 @@ const db = mysql.createConnection(
         user: 'root',
         // MySQL password
         password: 'Corona20!',
-        database: 'courses_db'
+        database: 'company_db'
       },
-      console.log(`Connected to the courses_db database.`)
+      console.log(`Connected to the company_db database.`)
     );
+
+
+   // Default response for any other request (Not Found)
+app.use((req, res) => {
+    res.status(404).end();
+  });
+  
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+   
