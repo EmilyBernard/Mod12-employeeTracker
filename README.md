@@ -7,9 +7,9 @@ When opening the tracker, run 'npm start' in the command line to begin.  The pro
 ## Project Status
 Submitted for evaluation
 
-## Project Deployed
+## Project Deployed & Video Walkthrough
 
-https://github
+https://github.com/EmilyBernard/Mod12-employeeTracker
 <br>
 https://e
 
