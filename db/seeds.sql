@@ -1,20 +1,20 @@
 INSERT INTO department (name)
 VALUES 
-(Accounting),
-(Human Resources),
-(IT),
-(Marketing);
+('Accounting'),
+('Human Resources'),
+('IT'),
+('Marketing');
 
 INSERT INTO role (title, salary, department_id)
 VALUES
-('Payroll Specialist', 50,000, 1),
-('Collections Associate', 35,000, 1),
-('Human Resources Manager', 90,000, 2),
-('Benefits Coodinator', 60,000, 2),
-('Engineer', 70,000, 3),
-('Developer', 70,000, 3),
-('Marketing Manager', 90,000, 4),
-('Digital Marketing Assistant', 40,000, 4);
+('Payroll Specialist', 50000, 1),
+('Collections Associate', 35000, 1),
+('Human Resources Manager', 90000, 2),
+('Benefits Coodinator', 60000, 2),
+('Engineer', 70000, 3),
+('Developer', 70000, 3),
+('Marketing Manager', 90000, 4),
+('Digital Marketing Assistant', 40000, 4);
 
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
