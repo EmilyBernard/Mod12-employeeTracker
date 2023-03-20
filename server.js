@@ -156,7 +156,7 @@ addDepartment = () => {
 
   db.query(sql, answer.addDepartment ,(err, results) => {
    
-    console.log(`You have added ${answer.addDepartment} to Departments!`);
+    console.log(`You have added the ${answer.addDepartment} Department.`);
     promptUserquestions();
   });
  }) 
@@ -205,7 +205,7 @@ addRole = () => {
     db.query(query, [[response.title, response.salary, response.department]], (err, res) => {
         if (err) throw err;
         
-        console.log(`Successfully added the ${response.title} role to the ${response.department}.`);
+        console.log(`Successfully added the ${response.title} role.`);
         promptUserquestions();
       });
     })
@@ -278,7 +278,7 @@ addEmployee = () => {
 
           db.query(query, [[response.first_name, response.last_name, response.role_id, manager_id]], (err, res) => {
             if (err) throw err;
-                console.log(`Successfully added ${response.first_name} ${response.last_name} as ${response.role_id}.`);
+                console.log(`Successfully added ${response.first_name} ${response.last_name}.`);
 
               promptUserquestions();
            });
@@ -347,7 +347,7 @@ updateEmployee = () => {
             response.id], (err, res) => {
             if (err) throw err;
             
-            console.log(`You have updated this employee's role to ${response.role}`);
+            console.log(`You have updated this employee's role.`);
             promptUserquestions();
           });
         })

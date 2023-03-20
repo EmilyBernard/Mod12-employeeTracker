@@ -2,7 +2,7 @@
 This Employee Tracker will enable owners and managers to quickly view departments, roles, and employees within the company. Users can add departments, roles, and employees as well as update current employees.
 
 ## Usage
-When opening the tracker, run 'npm start' in the command line to begin.  The prompts will enable the user to acces information and also to add and update current information.
+When opening the tracker, run 'npm start' in the command line to begin.  The prompts will enable the user to access information and also to add and update current information.
 
 ## Project Status
 Submitted for evaluation
@@ -11,13 +11,13 @@ Submitted for evaluation
 
 https://github.com/EmilyBernard/Mod12-employeeTracker
 <br>
-https://e
+https://drive.google.com/file/d/1itYSyblr-au3KH44S_YqVAZs3CFF8KrJ/view
 
 ## Starter Code
 None
 
 ## Screenshot of webpage
-<img src="" alt="Website Screenshot">
+<img src="employeeTrackerScreenshot.png" alt="Website Screenshot">
 
 
 ## User Story
