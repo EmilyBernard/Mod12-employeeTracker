@@ -29,75 +29,75 @@ db.connect(err => {
   });
 
   DBconnected = () => { 
-    promptUserquestions();
+    init();
   };
 
 
 // Initial prompts
 
-const promptUserquestions = () => {
-    inquirer.prompt ([
-      {
-        type: 'list',
-        name: 'choices', 
-        message: 'What would you like to do?',
-        choices: ['View all departments', 
-                  'View all roles', 
-                  'View all employees', 
-                  'Add a department', 
-                  'Add a role', 
-                  'Add an employee', 
-                  'Update an employee role',
-                  'Exit']
+const init = () => {
+  inquirer.prompt({
+      name: "choices",
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        "View departments",
+        "View roles",
+        "View employees",
+        "Add department",
+        "Add role",
+        "Add employee",
+        "Update employee role",
+        "Exit"]
       }
-    ])
-      .then((answers) => {
-        const { choices } = answers; 
-  
-        if (choices === "View all departments") {
-          showDepartments();
-        }
-  
-        if (choices === "View all roles") {
-          showRoles();
-        }
-  
-        if (choices === "View all employees") {
-          showEmployees();
-        }
-  
-        if (choices === "Add a department") {
+    )
+    .then((answer) => {
+      switch (answer.choices) {
+        case "View departments":
+          viewDepartments();
+          break;
+
+        case "View roles":
+          viewRoles();
+          break;
+
+        case "View employees":
+          viewEmployees();
+          break;
+
+        case "Add department":
           addDepartment();
-        }
-  
-        if (choices === "Add a role") {
+          break;
+
+        case "Add role":
           addRole();
-        }
-  
-        if (choices === "Add an employee") {
+          break;
+
+        case "Add employee":
           addEmployee();
-        }
+          break;
+
+        case "Update employee role":
+          updateEmployeeRole();
+          break;
   
-        if (choices === "Update an employee role") {
-          updateEmployee();
-        }
-  
-        if (choices === "Exit") {
-          db.end()
+        case "Exit":
+          db.end();
+          break;
       };
     });
   };
 
-// Function to Show Departments
-showDepartments = () => {
+// Function to View Departments
+const viewDepartments = () => {
     db.query('SELECT department.id as ID, department.name as Department FROM department', function (err, results) {
         console.table(results);
-        promptUserquestions();
+        init();
     });
 };
 
-// Function to Show Roles
-showRoles= () => {  
+// Function to view Roles
+const viewRoles= () => {  
     const sql = `Select 
     role.id as ID, 
     role.title as Role, 
@@ -107,12 +107,12 @@ showRoles= () => {
   
     db.query(sql, function (err, results) {
       console.table(results);
-      promptUserquestions();
+      init();
     });
   }
 
 // Function to Show Employees and their Managers
-showEmployees = () => {
+const viewEmployees = () => {
     const sql = `Select 
         employee.id, 
         concat (employee.first_name, " ", employee.last_name) as Employee,
@@ -126,13 +126,13 @@ showEmployees = () => {
  
     db.query(sql, function (err, results) {
       console.table(results);
-      promptUserquestions();
+      init();
     });
   };
 
   
 // Function to ADD Department
-addDepartment = () => {
+const addDepartment = () => {
   inquirer.prompt([
     {
       type: 'input', 
@@ -157,13 +157,13 @@ addDepartment = () => {
   db.query(sql, answer.addDepartment ,(err, results) => {
    
     console.log(`You have added the ${answer.addDepartment} Department.`);
-    promptUserquestions();
+    init();
   });
  }) 
 }
 
 // Function to ADD Role
-addRole = () => {
+const addRole = () => {
   const departments = [];
   db.query("SELECT * FROM DEPARTMENT", (err, res) => {
     if (err) throw err;
@@ -206,7 +206,7 @@ addRole = () => {
         if (err) throw err;
         
         console.log(`Successfully added the ${response.title} role.`);
-        promptUserquestions();
+        init();
       });
     })
     .catch(err => {
@@ -216,7 +216,7 @@ addRole = () => {
 }
 
 // Function to ADD Employee
-addEmployee = () => {
+const addEmployee = () => {
   db.query("SELECT * FROM EMPLOYEE", (err, eRes) => {
     if (err) throw err;
     const managerAdd = [
@@ -280,7 +280,7 @@ addEmployee = () => {
             if (err) throw err;
                 console.log(`Successfully added ${response.first_name} ${response.last_name}.`);
 
-              promptUserquestions();
+              init();
            });
         })
         .catch(err => {
@@ -291,7 +291,7 @@ addEmployee = () => {
 };
 
 // Function to UPDATE employee role
-updateEmployee = () => {
+const updateEmployee = () => {
   db.query("SELECT * FROM EMPLOYEE", (err, eRes) => {
     if (err) throw err;
     
@@ -348,7 +348,7 @@ updateEmployee = () => {
             if (err) throw err;
             
             console.log(`You have updated this employee's role.`);
-            promptUserquestions();
+            init();
           });
         })
         .catch(err => {
@@ -357,5 +357,4 @@ updateEmployee = () => {
       })
   });
 };
-
 
